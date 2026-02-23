@@ -271,18 +271,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6f76a8230adea44af647bb4985ed0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::A_ZombieSwarmManager
-  Count: 10
+  Count: 6
   BoundsCenter: {x: 10, y: 0, z: 10}
-  MovementSpeed: 4
+  MovementSpeed: 5
   RotationSpeed: 8
-  StopDistance: 3
+  StopDistance: 2.5
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  DetectionDistance: 5
-  SeparationWeight: 1
-  AlignmentWeight: 1
-  CohesionWeight: 2
+  DetectionDistance: 1.5
+  SeparationWeight: 2.29
+  AlignmentWeight: 4
+  CohesionWeight: 0.1
   Target: {fileID: 524835181}
   ZombiePrefab: {fileID: 6837500719836034348, guid: fdb4916bccb4f8848a0cab9561f7f16f, type: 3}
   Leader: {fileID: 524835175}
@@ -332,7 +332,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

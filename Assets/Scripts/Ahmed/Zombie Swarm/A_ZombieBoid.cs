@@ -2,14 +2,22 @@ using UnityEngine;
 public class A_ZombieBoid : MonoBehaviour
 {
     [HideInInspector] public A_ZombieSwarmManager SwarmManager;
-    private float MovementSpeedBlend;
     private Vector3 Direction = Vector3.zero;
     private Vector3 SeparationForce;
-    private void Update()
+
+    private float MovementSpeedBlend;
+    private float BoidLastSpeed;
+    private float BoidCurrentSpeed;
+    private float BoidNewSpeed;
+    private float BoidSpeedTime;
+    private float ChangeBoidSpeedTimer;
+    private float Timer;
+
+    private void Start()
     {
-        FollowTarget();
+        RecalculateBoidSpeed();
     }
-    private void FollowTarget()
+    public void FollowTarget()
     {
         SeparationForce = Vector3.zero;
         Vector3 TargetDirection = SwarmManager.GetTargetPosition() - transform.position;
@@ -26,6 +34,7 @@ public class A_ZombieBoid : MonoBehaviour
         }
         if (distance > SwarmManager.StopDistance)
         {
+            ChangeBoidSpeed();
             MoveTowardsTarget();
             RotateTowardsTarget();
         }
@@ -34,6 +43,27 @@ public class A_ZombieBoid : MonoBehaviour
             StopMove();
             StopRotate();
         }
+    }
+    private void RecalculateBoidSpeed()
+    {
+        Timer = 0.0f;
+        ChangeBoidSpeedTimer = 0.0f;
+        BoidSpeedTime = Random.Range(2, 5);
+        BoidLastSpeed = BoidCurrentSpeed;
+        BoidNewSpeed = Random.Range(SwarmManager.MovementSpeed - 1, SwarmManager.MovementSpeed + 1);
+    }
+    private void ChangeBoidSpeed()
+    {
+        if (Timer >= BoidSpeedTime)
+        {
+            RecalculateBoidSpeed();
+        }
+        if (ChangeBoidSpeedTimer <= 1.0f)
+        {
+            BoidCurrentSpeed = Mathf.Lerp(BoidLastSpeed, BoidNewSpeed, ChangeBoidSpeedTimer);
+        }
+        Timer += Time.deltaTime;
+        ChangeBoidSpeedTimer += Time.deltaTime;
     }
     private Collider[] GetNeighbours()
     {
@@ -82,8 +112,8 @@ public class A_ZombieBoid : MonoBehaviour
     private void MoveTowardsTarget()
     {
         Direction = Direction.normalized;
-        transform.position += SwarmManager.MovementSpeed * Time.deltaTime * (Direction + SeparationForce).normalized;
-        MovementSpeedBlend = Mathf.Lerp(MovementSpeedBlend, 1, Time.deltaTime * SwarmManager.MovementSpeed);
+        transform.position += BoidCurrentSpeed * Time.deltaTime * (Direction + SeparationForce).normalized;
+        MovementSpeedBlend = Mathf.Lerp(MovementSpeedBlend, 1, Time.deltaTime * BoidCurrentSpeed);
         //ZombieAnimator.SetFloat("Speed", MovementSpeedBlend);
     }
     private void RotateTowardsTarget()
@@ -92,7 +122,7 @@ public class A_ZombieBoid : MonoBehaviour
     }
     private void StopMove()
     {
-        MovementSpeedBlend = Mathf.Lerp(MovementSpeedBlend, 0, Time.deltaTime * SwarmManager.MovementSpeed);
+        MovementSpeedBlend = Mathf.Lerp(MovementSpeedBlend, 0, Time.deltaTime * BoidCurrentSpeed);
         //ZombieAnimator.SetFloat("Speed", MovementSpeedBlend);
     }
     private void StopRotate()
