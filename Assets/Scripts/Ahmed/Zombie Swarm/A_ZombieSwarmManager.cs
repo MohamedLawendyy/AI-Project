@@ -1,40 +1,8 @@
 using UnityEngine;
-/*
-public class A_ZombieSwarmManager : MonoBehaviour
-{
-    public static A_ZombieSwarmManager instance;
-    public GameObject Goal;
-    [HideInInspector] public GameObject[] ZombieBoids;
-    [SerializeField] private GameObject ZombiePrefab;
-    [SerializeField] private int Count;
-    [SerializeField] private Vector3 BoundsCenter;
-    [Range(0, 10)] public float SeperationDistance;
-    void Start()
-    {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this);
-
-        CreateBoids();
-    }
-    private void CreateBoids()
-    {
-        ZombieBoids = new GameObject[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            Vector3 Position = new(
-                Random.Range(-BoundsCenter.x, BoundsCenter.x),
-                Random.Range(-BoundsCenter.y, BoundsCenter.y),
-                Random.Range(-BoundsCenter.z, BoundsCenter.z)
-                );
-            ZombieBoids[i] = Instantiate(ZombiePrefab, Position, Quaternion.identity);
-        }
-    }
-}*/
 public class A_ZombieSwarmManager : MonoBehaviour
 {
     private A_ZombieBoid[] ZombieBoids;
+    private Vector3 LastTargetPosition;
 
     [Header("Swarm Settings")]
     [SerializeField] private int Count;
@@ -55,9 +23,10 @@ public class A_ZombieSwarmManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform Target;
     [SerializeField] private GameObject ZombiePrefab;
-
+    public GameObject Leader;
     private void Awake()
     {
+        LastTargetPosition = Target.position;
         CreateBoids();
     }
     private void CreateBoids()
@@ -70,18 +39,18 @@ public class A_ZombieSwarmManager : MonoBehaviour
                 transform.position.y,
                 Random.Range(-BoundsCenter.z, BoundsCenter.z)
                 );
-            //ZombieBoids[i]
             GameObject ZombieObject = Instantiate(ZombiePrefab, Position, Quaternion.identity);
             ZombieBoids[i] = ZombieObject.GetComponent<A_ZombieBoid>();
             ZombieBoids[i].SwarmManager = this;
         }
+        //Leader = ZombieBoids[0].gameObject;
     }
     public Vector3 GetTargetPosition()
     {
-        return Target.position;
+        return LastTargetPosition;
     }
     public void SetTargetPosition(Vector3 newTarget)
     {
-        Target.position = newTarget;
+        LastTargetPosition = newTarget;
     }
 }

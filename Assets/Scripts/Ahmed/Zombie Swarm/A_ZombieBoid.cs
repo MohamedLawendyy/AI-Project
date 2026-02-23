@@ -7,10 +7,7 @@ public class A_ZombieBoid : MonoBehaviour
     private Vector3 SeparationForce;
     private void Update()
     {
-        if (SwarmManager != null)
-        {
-            FollowTarget();
-        }
+        FollowTarget();
     }
     private void FollowTarget()
     {
