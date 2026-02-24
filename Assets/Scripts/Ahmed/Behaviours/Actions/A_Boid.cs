@@ -19,7 +19,7 @@ public class A_Boid : GOAction
     }
     public override TaskStatus OnUpdate()
     {
-        Boid.FollowTarget();
+        //Boid.FollowTarget();
         return TaskStatus.RUNNING;
     }
 }
