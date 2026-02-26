@@ -27,7 +27,7 @@ public class A_ZombieBoid : MonoBehaviour
         if (neigbours.Length > 0)
         {
             CalculateSeparationForce(neigbours);
-            ApplyAllignment(neigbours);
+            //ApplyAllignment(neigbours);
             ApplyCohesion(neigbours);
         }
         if (distance > SwarmManager.StopDistance)

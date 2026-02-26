@@ -37,13 +37,11 @@ public class BoidManager : MonoBehaviour
     private void ChangeBoidSpeed()
     {
         if (Timer >= BoidSpeedTime)
-        {
             RecalculateBoidSpeed();
-        }
+
         if (ChangeBoidSpeedTimer <= 1.0f)
-        {
             BoidCurrentSpeed = Mathf.Lerp(BoidLastSpeed, BoidNewSpeed, ChangeBoidSpeedTimer);
-        }
+
         Timer += Time.deltaTime;
         ChangeBoidSpeedTimer += Time.deltaTime;
     }
@@ -63,8 +61,8 @@ public class BoidManager : MonoBehaviour
         foreach (GameObject boid in Boids)
         {
             if (boid != this.gameObject)
-                //AverageForward += boid.transform.forward;
                 AverageForward += A_boidmanager_x.instance.Goal.transform.position - boid.transform.position;
+                //AverageForward += boid.transform.forward;
         }
         return (AverageForward / (Boids.Length - 1)) * BoidCurrentSpeed;
     }
