@@ -6,10 +6,18 @@ using UnityEngine.AI;
 [Action("Zombie Swarm Enemy Actions/Attack")]
 public class A_Attack : GOAction
 {
+    [InParam("ZombieSwarmManager")] public A_ZombieSwarmManager SwarmManager;
+    [InParam("PlayerTarget")] public GameObject Target;
+    //private NavMeshAgent agent;
+    public override void OnStart()
+    {
+        //SwarmManager = gameObject.GetComponent<A_ZombieSwarmManager>();
+        //agent = gameObject.GetComponent<NavMeshAgent>();
+    }
     public override TaskStatus OnUpdate()
     {
         Debug.Log("Attack");
-        //A_ZombieFlockManager.instance.isAttacking = true;
+        SwarmManager.SetTargetPosition(Target.transform.position);
         return TaskStatus.RUNNING;
     }
 }

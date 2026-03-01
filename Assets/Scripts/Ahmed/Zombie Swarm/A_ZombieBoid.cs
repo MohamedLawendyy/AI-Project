@@ -1,28 +1,24 @@
 using UnityEngine;
-public class A_BoidFormationManager : MonoBehaviour
+public class A_ZombieBoid : MonoBehaviour
 {
+    [HideInInspector] public A_ZombieSwarmManager SwarmManager;
     private Vector3 Direction = Vector3.zero;
     private Vector3 SeparationForce;
     private float MovementSpeedBlend;
 
     private Rigidbody RB;
-    private void Awake()
+    private void Start()
     {
         RB = GetComponent<Rigidbody>();
     }
     private void Update()
     {
-        if (false)
-        {
-            if (!RB.isKinematic)
-                RB.isKinematic = true;
-            FollowTarget();
-        }
+        FollowTarget();
     }
     private void FollowTarget()
     {
         SeparationForce = Vector3.zero;
-        Vector3 TargetDirection = A_ZombieFlockManager.instance.Target.position - transform.position;
+        Vector3 TargetDirection = SwarmManager.GetTargetPosition() - transform.position;
         TargetDirection.y = 0.0f;
         Direction = TargetDirection;
         float distance = Direction.magnitude;
@@ -31,10 +27,10 @@ public class A_BoidFormationManager : MonoBehaviour
         if (neigbours.Length > 0)
         {
             CalculateSeparationForce(neigbours);
-            ApplyAllignment(neigbours);
+            //ApplyAllignment(neigbours);
             ApplyCohesion(neigbours);
         }
-        if (distance > A_ZombieFlockManager.instance.StopDistance)
+        if (distance > SwarmManager.StopDistance)
         {
             MoveTowardsTarget();
             RotateTowardsTarget();
@@ -47,7 +43,7 @@ public class A_BoidFormationManager : MonoBehaviour
     }
     private Collider[] GetNeighbours()
     {
-        return Physics.OverlapSphere(transform.position, A_ZombieFlockManager.instance.DetectionDistance, A_ZombieFlockManager.instance.EnemyLayerMask);
+        return Physics.OverlapSphere(transform.position, SwarmManager.DetectionDistance, SwarmManager.EnemyLayerMask);
     }
     private void CalculateSeparationForce(Collider[] neighbours)
     {
@@ -59,7 +55,7 @@ public class A_BoidFormationManager : MonoBehaviour
             float distance = dir.magnitude;
             Vector3 away = -dir.normalized;
             if (distance > 0)
-                SeparationForce += (away / distance) * A_ZombieFlockManager.instance.SeparationWeight;
+                SeparationForce += (away / distance) * SwarmManager.SeparationWeight;
         }
     }
     private void ApplyAllignment(Collider[] neighbours)
@@ -72,7 +68,7 @@ public class A_BoidFormationManager : MonoBehaviour
         }
         if (neighboursForward != Vector3.zero)
             neighboursForward.Normalize();
-        SeparationForce += neighboursForward * A_ZombieFlockManager.instance.AlignmentWeight;
+        SeparationForce += neighboursForward * SwarmManager.AlignmentWeight;
     }
     private void ApplyCohesion(Collider[] neighbours)
     {
@@ -84,22 +80,22 @@ public class A_BoidFormationManager : MonoBehaviour
         }
         averagePosition /= neighbours.Length - 1;
         Vector3 cohesionDir = (averagePosition - transform.position).normalized;
-        SeparationForce += cohesionDir * A_ZombieFlockManager.instance.CohesionWeight;
+        SeparationForce += cohesionDir * SwarmManager.CohesionWeight;
     }
     private void MoveTowardsTarget()
     {
         Direction = Direction.normalized;
-        transform.position += A_ZombieFlockManager.instance.FormationSpeed * Time.deltaTime * (Direction + SeparationForce).normalized;
-        MovementSpeedBlend = Mathf.Lerp(MovementSpeedBlend, 1, Time.deltaTime * A_ZombieFlockManager.instance.FormationSpeed);
+        transform.position += SwarmManager.MovementSpeed * Time.deltaTime * (Direction + SeparationForce).normalized;
+        MovementSpeedBlend = Mathf.Lerp(MovementSpeedBlend, 1, Time.deltaTime * SwarmManager.MovementSpeed);
         //ZombieAnimator.SetFloat("Speed", MovementSpeedBlend);
     }
     private void RotateTowardsTarget()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Direction), Time.deltaTime * A_ZombieFlockManager.instance.RotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Direction), Time.deltaTime * SwarmManager.RotationSpeed);
     }
     private void StopMove()
     {
-        MovementSpeedBlend = Mathf.Lerp(MovementSpeedBlend, 0, Time.deltaTime * A_ZombieFlockManager.instance.FormationSpeed);
+        MovementSpeedBlend = Mathf.Lerp(MovementSpeedBlend, 0, Time.deltaTime * SwarmManager.MovementSpeed);
         //ZombieAnimator.SetFloat("Speed", MovementSpeedBlend);
     }
     private void StopRotate()
