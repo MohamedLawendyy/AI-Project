@@ -1,7 +1,7 @@
 using UnityEngine;
 public class A_ZombieSwarmManager : MonoBehaviour
 {
-    private A_ZombieBoid[] ZombieBoids;
+    private A_BoidFormationManager[] ZombieBoids;
     private Vector3 LastTargetPosition;
 
     [Header("Swarm Settings")]
@@ -31,7 +31,7 @@ public class A_ZombieSwarmManager : MonoBehaviour
     }
     private void CreateBoids()
     {
-        ZombieBoids = new A_ZombieBoid[Count];
+        ZombieBoids = new A_BoidFormationManager[Count];
         for (int i = 0; i < Count; i++)
         {
             Vector3 Position = new(
@@ -40,8 +40,8 @@ public class A_ZombieSwarmManager : MonoBehaviour
                 Random.Range(-BoundsCenter.z, BoundsCenter.z)
                 );
             GameObject ZombieObject = Instantiate(ZombiePrefab, Position, Quaternion.identity);
-            ZombieBoids[i] = ZombieObject.GetComponent<A_ZombieBoid>();
-            ZombieBoids[i].SwarmManager = this;
+            ZombieBoids[i] = ZombieObject.GetComponent<A_BoidFormationManager>();
+            //ZombieBoids[i].SwarmManager = this;
         }
         //Leader = ZombieBoids[0].gameObject;
     }
