@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 140373076}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.92, y: 1, z: -11.65}
+  m_LocalPosition: {x: -61.53, y: 1, z: -10.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,7 +303,7 @@ GameObject:
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &458670460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ Transform:
   m_GameObject: {fileID: 524835175}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.63, y: 1, z: -17.63}
+  m_LocalPosition: {x: 1.63, y: 1, z: -6.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -905,7 +905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1649792094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,19 +915,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1649792093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b010c39a68f8da544872101ce25cbe64, type: 3}
+  m_Script: {fileID: 11500000, guid: b7e039d9e95f3774da3317eb5d3c083b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::A_boidmanager_x
-  Boids: []
-  Goal: {fileID: 524835175}
+  FormationSpeed: 4
+  MovementSpeed: 1
+  RotationSpeed: 8
+  StopDistance: 3
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  DetectionDistance: 3
   SeparationWeight: 1
   AlignmentWeight: 1
   CohesionWeight: 1
-  Speed: 1
+  Count: 6
+  SeperationDistance: 3.3
+  Bounds: {x: 5, y: 0, z: 5}
+  Target: {fileID: 140373077}
+  Leader: {fileID: 524835181}
   BoidMesh: {fileID: 5531656383074074777, guid: 71d68adabdd67c24cb8f10f84397d136, type: 3}
-  Count: 10
-  Bounds: {x: 10, y: 0, z: 10}
-  SeperationDistance: 2.06
+  isAttacking: 0
+  Boids: []
 --- !u!4 &1649792095
 Transform:
   m_ObjectHideFlags: 0
@@ -937,7 +946,7 @@ Transform:
   m_GameObject: {fileID: 1649792093}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 3.1}
+  m_LocalPosition: {x: -4.52, y: -0, z: -12.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

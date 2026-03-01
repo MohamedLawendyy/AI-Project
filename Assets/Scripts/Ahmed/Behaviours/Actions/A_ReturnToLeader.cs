@@ -6,27 +6,25 @@ using UnityEngine.AI;
 [Action("Zombie Swarm Enemy Actions/ReturnToLeader")]
 public class A_ReturnToLeader : GOAction
 {
-    private A_ZombieSwarmManager SwarmManager;
     private NavMeshAgent agent;
     private Vector3 lastTargetPos;
     public override void OnStart()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        SwarmManager = gameObject.GetComponent<A_ZombieBoid>().SwarmManager;
-        if (SwarmManager.Leader.transform.position != null)
+        if (A_ZombieFlockManager.instance.Leader.position != null)
         {
-            lastTargetPos = SwarmManager.Leader.transform.position;
+            lastTargetPos = A_ZombieFlockManager.instance.Leader.position;
             agent.SetDestination(lastTargetPos);
         }
     }
     public override TaskStatus OnUpdate()
     {
-        if (SwarmManager.Leader.transform.position == null || agent == null)
+        if (A_ZombieFlockManager.instance.Leader.position == null || agent == null)
             return TaskStatus.FAILED;
 
-        if ((SwarmManager.Leader.transform.position - lastTargetPos).sqrMagnitude >= 0.4f)
+        if ((A_ZombieFlockManager.instance.Leader.position - lastTargetPos).sqrMagnitude >= 0.4f)
         {
-            lastTargetPos = SwarmManager.Leader.transform.position;
+            lastTargetPos = A_ZombieFlockManager.instance.Leader.position;
             agent.SetDestination(lastTargetPos);
         }
 
