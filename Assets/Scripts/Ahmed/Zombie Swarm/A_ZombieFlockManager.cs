@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 public class A_ZombieFlockManager : MonoBehaviour
 {
@@ -22,31 +23,34 @@ public class A_ZombieFlockManager : MonoBehaviour
     [SerializeField] private Vector3 Bounds;
 
     [Header("References")]
-    public Transform Target;
-    public Transform Leader;
+    public GameObject Goal;
+    public GameObject Leader;
+    public GameObject LastLeader;
     [SerializeField] private GameObject BoidMesh;
 
-    [HideInInspector] public bool isAttacking = false;
-    [HideInInspector] public GameObject[] Boids;
+    [HideInInspector] public bool isAttacking;
+    [HideInInspector] public List<GameObject> Boids;
     private void Awake()
     {
         if (instance == null)
             instance = this;
         else
             Destroy(this);
+        isAttacking = false;
         CreateBoids();
     }
     private void CreateBoids()
     {
-        Boids = new GameObject[Count];
+        Boids = new List<GameObject>();
         for (int i = 0; i < Count; i++)
         {
             Vector3 Position = new(
                 Random.Range(-Bounds.x + transform.position.x, Bounds.x + transform.position.x),
-                0.5f,
+                1f,
                 Random.Range(-Bounds.z + transform.position.z, Bounds.z + transform.position.z)
                 );
-            Boids[i] = Instantiate(BoidMesh, Position, Quaternion.identity);
+            Boids.Add(Instantiate(BoidMesh, Position, Quaternion.identity));
         }
+        //Leader = Boids[0];
     }
 }

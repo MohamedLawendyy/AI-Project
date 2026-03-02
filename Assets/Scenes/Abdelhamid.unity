@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 140373076}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.53, y: 1, z: -10.9}
+  m_LocalPosition: {x: -119.3, y: 1, z: -16.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 524835178}
   - component: {fileID: 524835176}
   - component: {fileID: 524835182}
+  - component: {fileID: 524835183}
   m_Layer: 10
   m_Name: Leader
   m_TagString: Untagged
@@ -498,7 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BehaviorExecutor
   maxTasksPerTick: 500
-  behavior: {fileID: 11400000, guid: 72129c4e0b12e82499b0f660585e4495, type: 2}
+  behavior: {fileID: 11400000, guid: 7608cdfa3d980144c9a69247a611ff14, type: 2}
   paused: 0
   restartWhenFinished: 0
   blackboard:
@@ -509,9 +510,11 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
-    - 3
+    - 3.1
+    - 8
     floatParamsNames:
-    - CloseDistance
+    - NearDistancetoGoal
+    - FarDistancefromLeader
     floatParamsLostDefaultValue: 
     stringParams: []
     stringParamsNames: []
@@ -519,12 +522,8 @@ MonoBehaviour:
     colorParams: []
     colorParamsNames: []
     colorParamsLostDefaultValue: 
-    objectParams:
-    - {fileID: 458670460}
-    - {fileID: 140373076}
-    objectParamsNames:
-    - ZombieSwarmManager
-    - PlayerTarget
+    objectParams: []
+    objectParamsNames: []
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []
@@ -555,6 +554,22 @@ MonoBehaviour:
     quaternionParams: []
     quaternionParamsNames: []
     quaternionParamsLostDefaultValue: 
+--- !u!114 &524835183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524835175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c2e5adccdd9414ba458a4119a7cf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::A_BoidStats
+  Health: 100
+  CurrentHealth: 100
+  AttackDamage: 20
+  IsLeader: 1
 --- !u!1 &692621552
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +599,7 @@ Light:
   serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.02
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -824,7 +839,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: dcc6c0fcd77564d40af40c4d2e6807c8, type: 2}
   m_BuildHeightMesh: 0
@@ -930,10 +945,11 @@ MonoBehaviour:
   AlignmentWeight: 1
   CohesionWeight: 1
   Count: 6
-  SeperationDistance: 3.3
+  SeperationDistance: 2
   Bounds: {x: 5, y: 0, z: 5}
-  Target: {fileID: 140373077}
-  Leader: {fileID: 524835181}
+  Goal: {fileID: 140373076}
+  Leader: {fileID: 524835175}
+  LastLeader: {fileID: 524835175}
   BoidMesh: {fileID: 5531656383074074777, guid: 71d68adabdd67c24cb8f10f84397d136, type: 3}
   isAttacking: 0
   Boids: []

@@ -11,25 +11,29 @@ public class A_ReturnToLeader : GOAction
     public override void OnStart()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        if (A_ZombieFlockManager.instance.Leader.position != null)
+        agent.enabled = true;
+        if (A_ZombieFlockManager.instance.Leader != null)
         {
-            lastTargetPos = A_ZombieFlockManager.instance.Leader.position;
+            lastTargetPos = A_ZombieFlockManager.instance.Leader.transform.position;
             agent.SetDestination(lastTargetPos);
         }
     }
     public override TaskStatus OnUpdate()
     {
-        if (A_ZombieFlockManager.instance.Leader.position == null || agent == null)
+        if (A_ZombieFlockManager.instance.Leader == null || agent == null)
             return TaskStatus.FAILED;
 
-        if ((A_ZombieFlockManager.instance.Leader.position - lastTargetPos).sqrMagnitude >= 0.4f)
+        if ((A_ZombieFlockManager.instance.Leader.transform.position - lastTargetPos).sqrMagnitude >= 0.2f)
         {
-            lastTargetPos = A_ZombieFlockManager.instance.Leader.position;
+            lastTargetPos = A_ZombieFlockManager.instance.Leader.transform.position;
             agent.SetDestination(lastTargetPos);
         }
 
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            agent.enabled = false;
             return TaskStatus.COMPLETED;
+        }
 
         return TaskStatus.RUNNING;
     }

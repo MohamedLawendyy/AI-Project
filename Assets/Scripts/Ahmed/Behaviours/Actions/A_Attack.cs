@@ -6,10 +6,13 @@ using UnityEngine.AI;
 [Action("Zombie Swarm Enemy Actions/Attack")]
 public class A_Attack : GOAction
 {
+    public override void OnStart()
+    {
+        A_ZombieFlockManager.instance.isAttacking = true;
+    }
     public override TaskStatus OnUpdate()
     {
-        Debug.Log("Attack");
-        //A_ZombieFlockManager.instance.isAttacking = true;
+        //Debug.Log("Attack");
         return TaskStatus.RUNNING;
     }
 }

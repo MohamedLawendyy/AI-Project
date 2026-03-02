@@ -6,16 +6,17 @@ using UnityEngine.AI;
 [Action("Zombie Swarm Enemy Actions/Boid")]
 public class A_Boid : GOAction
 {
-    //private NavMeshAgent agent;
+    private NavMeshAgent agent;
     public override void OnStart()
     {
-        //agent = gameObject.GetComponent<NavMeshAgent>();
-        //agent.SetDestination(gameObject.transform.position);
-        //agent.ResetPath();
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        agent.enabled = true;
+        agent.SetDestination(gameObject.transform.position);
+        agent.ResetPath();
+        agent.enabled = false;
     }
     public override TaskStatus OnUpdate()
     {
-        //A_ZombieFlockManager.instance.isAttacking = false;
         return TaskStatus.RUNNING;
     }
 }

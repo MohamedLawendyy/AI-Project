@@ -4,7 +4,6 @@ public class A_BoidFormationManager : MonoBehaviour
     private Vector3 Direction = Vector3.zero;
     private Vector3 SeparationForce;
     private float MovementSpeedBlend;
-
     private Rigidbody RB;
     private void Awake()
     {
@@ -12,7 +11,7 @@ public class A_BoidFormationManager : MonoBehaviour
     }
     private void Update()
     {
-        if (false)
+        if (A_ZombieFlockManager.instance.isAttacking)
         {
             if (!RB.isKinematic)
                 RB.isKinematic = true;
@@ -22,7 +21,7 @@ public class A_BoidFormationManager : MonoBehaviour
     private void FollowTarget()
     {
         SeparationForce = Vector3.zero;
-        Vector3 TargetDirection = A_ZombieFlockManager.instance.Target.position - transform.position;
+        Vector3 TargetDirection = A_ZombieFlockManager.instance.Goal.transform.position - transform.position;
         TargetDirection.y = 0.0f;
         Direction = TargetDirection;
         float distance = Direction.magnitude;

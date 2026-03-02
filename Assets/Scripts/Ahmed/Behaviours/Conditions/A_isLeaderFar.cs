@@ -6,6 +6,6 @@ public class A_isLeaderFar : GOCondition
     [InParam("FarDistancetoLeader")] public float closeDistance;
     public override bool Check()
     {
-        return (gameObject.transform.position - A_ZombieFlockManager.instance.Leader.position).sqrMagnitude >= closeDistance * closeDistance;
+        return (gameObject.transform.position - A_ZombieFlockManager.instance.Leader.transform.position).sqrMagnitude >= closeDistance * closeDistance;
     }
 }

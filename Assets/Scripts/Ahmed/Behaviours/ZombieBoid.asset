@@ -15,7 +15,7 @@ MonoBehaviour:
   brickName: Assets/Scripts/Ahmed/Behaviours/ZombieBoid.asset
   xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
     version=\"1.0\">\r\n  <BehaviorTree id=\"0\" />\r\n  <runtimeInfo>\r\n    <BehaviorTree
-    id=\"0\" guid=\"75e6694b650037a4f8f65acdffb9d617\" nextId=\"16\">\r\n      <root>\r\n       
+    id=\"0\" guid=\"75e6694b650037a4f8f65acdffb9d617\" nextId=\"17\">\r\n      <root>\r\n       
     <RepeatDecorator id=\"15\" />\r\n      </root>\r\n      <inputParams>\r\n       
     <inputValues>\r\n          <entry name=\"FarDistancefromLeader\" type=\"System.Single\"
     isBlackboard=\"False\" value=\"2\" />\r\n        </inputValues>\r\n      </inputParams>\r\n     
@@ -24,10 +24,20 @@ MonoBehaviour:
     <PrioritySelectorNode id=\"9\" />\r\n      </child>\r\n      <inputParams />\r\n     
     <outputParams />\r\n      <localParams />\r\n    </RepeatDecorator>\r\n    <PrioritySelectorNode
     id=\"9\">\r\n      <children>\r\n        <elem>\r\n          <GuardAndNode>\r\n           
+    <guard>\r\n              <ConditionEvalNode id=\"16\" />\r\n            </guard>\r\n           
+    <child>\r\n              <ActionNode id=\"11\" />\r\n            </child>\r\n         
+    </GuardAndNode>\r\n        </elem>\r\n        <elem>\r\n          <GuardAndNode>\r\n           
     <guard>\r\n              <ConditionEvalNode id=\"14\" />\r\n            </guard>\r\n           
     <child>\r\n              <ActionNode id=\"13\" />\r\n            </child>\r\n         
     </GuardAndNode>\r\n        </elem>\r\n      </children>\r\n      <inputParams
     />\r\n      <outputParams />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n   
+    <ConditionEvalNode id=\"16\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Zombie
+    Swarm Enemy Conditions/isLeaderFar\">\r\n      <inputParams>\r\n        <inputValues>\r\n         
+    <entry name=\"FarDistancetoLeader\" type=\"System.Single\" isBlackboard=\"True\"
+    blackboard=\"FarDistancefromLeader\" />\r\n        </inputValues>\r\n      </inputParams>\r\n     
+    <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
+    <ActionNode id=\"11\" action=\"Zombie Swarm Enemy Actions/ReturnToLeader\">\r\n     
+    <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n   
     <ConditionEvalNode id=\"14\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"13\" action=\"Zombie Swarm Enemy Actions/Boid\">\r\n      <inputParams
@@ -38,36 +48,40 @@ MonoBehaviour:
     <elem>\r\n          <ActionNode id=\"11\" />\r\n        </elem>\r\n        <elem>\r\n         
     <ActionNode id=\"13\" />\r\n        </elem>\r\n        <elem>\r\n          <ConditionEvalNode
     id=\"14\" />\r\n        </elem>\r\n        <elem>\r\n          <RepeatDecorator
-    id=\"15\" />\r\n        </elem>\r\n      </_rootList>\r\n      <_nodes>\r\n       
+    id=\"15\" />\r\n        </elem>\r\n        <elem>\r\n          <ConditionEvalNode
+    id=\"16\" />\r\n        </elem>\r\n      </_rootList>\r\n      <_nodes>\r\n       
     <nodes>\r\n          <PrioritySelectorNode id=\"9\" />\r\n          <ActionNode
     id=\"11\" />\r\n          <RepeatDecorator id=\"15\" />\r\n          <ActionNode
-    id=\"13\" />\r\n          <ConditionEvalNode id=\"14\" />\r\n        </nodes>\r\n     
-    </_nodes>\r\n    </BehaviorTree>\r\n    <RepeatDecorator id=\"15\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"True\" position=\"604.5567
-    -167.619\" name=\"Repeat\" description=\"Repeats the execution of its child node\"
-    cardinality=\"1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
-    <RepeatDecorator id=\"15\" />\r\n        </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n   
-    <PrioritySelectorNode id=\"9\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"545.2845 -50.37418\" name=\"Priority Selector\"
-    description=\"\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
-    id=\"0\" />\r\n          <RepeatDecorator id=\"15\" />\r\n          <RepeatDecorator
-    id=\"15\" />\r\n        </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n   
+    id=\"13\" />\r\n          <ConditionEvalNode id=\"14\" />\r\n          <ConditionEvalNode
+    id=\"16\" />\r\n        </nodes>\r\n      </_nodes>\r\n    </BehaviorTree>\r\n   
+    <RepeatDecorator id=\"15\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"172.41 -14.49202\" name=\"Repeat\" description=\"Repeats
+    the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n         
+    <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"15\" />\r\n       
+    </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n    <PrioritySelectorNode
+    id=\"9\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"113.1378 102.7528\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
+    hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator
+    id=\"15\" />\r\n          <RepeatDecorator id=\"15\" />\r\n        </data>\r\n     
+    </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"16\">\r\n     
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"True\" position=\"77.69926
+    274.2359\" name=\"Zombie Swarm Enemy Conditions/isLeaderFar\" description=\"Eval\"
+    cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
+    <ConditionEvalNode id=\"16\" />\r\n          <PrioritySelectorNode id=\"9\" />\r\n       
+    </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"11\">\r\n     
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"45.89204
+    246.5026\" name=\"Zombie Swarm Enemy Actions/ReturnToLeader\" description=\"\"
+    cardinality=\"0\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
+    <ActionNode id=\"11\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
     <ConditionEvalNode id=\"14\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"821.4168 157.707\" name=\"AlwaysTrue\" description=\"Eval\"
+    selected=\"False\" position=\"389.2699 310.8343\" name=\"AlwaysTrue\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ConditionEvalNode id=\"14\" />\r\n          <PrioritySelectorNode id=\"9\" />\r\n       
     </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"13\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"726.8853
-    90.77971\" name=\"Zombie Swarm Enemy Actions/Boid\" description=\"\" cardinality=\"0\"
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"294.7385
+    243.9067\" name=\"Zombie Swarm Enemy Actions/Boid\" description=\"\" cardinality=\"0\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
-    id=\"13\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n 
-    <runtimeInfo>\r\n    <ActionNode id=\"11\" action=\"Zombie Swarm Enemy Actions/ReturnToLeader\">\r\n     
-    <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n 
-    </runtimeInfo>\r\n  <editorInfo>\r\n    <ActionNode id=\"11\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"478.0387 93.37572\" name=\"Zombie
-    Swarm Enemy Actions/ReturnToLeader\" description=\"\" cardinality=\"0\" hasParent=\"False\">\r\n         
-    <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"11\" />\r\n        </data>\r\n     
-    </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
-  zoom: 0.7
+    id=\"13\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
+  zoom: 0.9
   subslist: []
   _guid: 75e6694b650037a4f8f65acdffb9d617
