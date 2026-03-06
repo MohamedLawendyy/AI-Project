@@ -4,10 +4,19 @@ public class A_BoidStats : MonoBehaviour
     public int Health;
     public int CurrentHealth;
     public int AttackDamage;
-    public bool IsLeader;
+    [HideInInspector] public bool IsLeader;
+
+    private Rigidbody RB;
+    private Animator AnimationController;
     private void Start()
     {
+        RB = GetComponent<Rigidbody>();
+        AnimationController = GetComponent<Animator>();
         CurrentHealth = Health;
+    }
+    private void Update()
+    {
+        AnimationController.SetFloat("Speed", RB.linearVelocity.magnitude);
     }
     public void Damage(int BulletDamage)
     {

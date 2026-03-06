@@ -53,4 +53,13 @@ public class A_ZombieFlockManager : MonoBehaviour
         }
         //Leader = Boids[0];
     }
+    public void KillBoid(GameObject boid)
+    {
+        if (Boids.Contains(gameObject))
+        {
+            Boids.Remove(gameObject);
+            Count--;
+            Destroy(boid, 3.0f);
+        }
+    }
 }

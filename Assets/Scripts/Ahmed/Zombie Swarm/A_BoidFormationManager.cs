@@ -1,12 +1,13 @@
 using UnityEngine;
 public class A_BoidFormationManager : MonoBehaviour
 {
-    private Vector3 Direction = Vector3.zero;
-    private Vector3 SeparationForce;
     private float MovementSpeedBlend;
+    private Vector3 Direction;
+    private Vector3 SeparationForce;
     private Rigidbody RB;
     private void Awake()
     {
+        Direction = Vector3.zero;
         RB = GetComponent<Rigidbody>();
     }
     private void Update()
@@ -52,13 +53,14 @@ public class A_BoidFormationManager : MonoBehaviour
     {
         foreach (Collider neighbour in neighbours)
         {
-            if (neighbour.transform == transform)
-                continue;
-            Vector3 dir = neighbour.transform.position - transform.position;
+            if (neighbour.transform == transform) continue;
+
+            Vector3 dir = transform.position - neighbour.transform.position;
             float distance = dir.magnitude;
-            Vector3 away = -dir.normalized;
-            if (distance > 0)
-                SeparationForce += (away / distance) * A_ZombieFlockManager.instance.SeparationWeight;
+
+            if (distance <= 0.001f) continue;
+
+            SeparationForce += dir.normalized * (A_ZombieFlockManager.instance.SeparationWeight / (distance * distance));
         }
     }
     private void ApplyAllignment(Collider[] neighbours)
@@ -88,7 +90,11 @@ public class A_BoidFormationManager : MonoBehaviour
     private void MoveTowardsTarget()
     {
         Direction = Direction.normalized;
-        transform.position += A_ZombieFlockManager.instance.FormationSpeed * Time.deltaTime * (Direction + SeparationForce).normalized;
+
+        Vector3 x = A_ZombieFlockManager.instance.FormationSpeed * Time.deltaTime * (Direction + SeparationForce);
+        x.y = 0.0f;
+        transform.position += x;
+
         MovementSpeedBlend = Mathf.Lerp(MovementSpeedBlend, 1, Time.deltaTime * A_ZombieFlockManager.instance.FormationSpeed);
         //ZombieAnimator.SetFloat("Speed", MovementSpeedBlend);
     }

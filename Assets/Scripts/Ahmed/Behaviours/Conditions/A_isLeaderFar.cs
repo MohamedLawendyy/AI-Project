@@ -1,6 +1,6 @@
 using BBUnity.Conditions;
 using Pada1.BBCore;
-[Condition("Zombie Swarm Enemy Conditions/isLeaderFar")]
+[Condition("Zombie Swarm Enemy/isLeaderFar")]
 public class A_isLeaderFar : GOCondition
 {
     [InParam("FarDistancetoLeader")] public float closeDistance;

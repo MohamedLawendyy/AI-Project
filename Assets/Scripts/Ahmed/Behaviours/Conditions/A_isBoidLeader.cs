@@ -1,7 +1,6 @@
 using BBUnity.Conditions;
 using Pada1.BBCore;
-using UnityEngine;
-[Condition("Zombie Swarm Enemy Conditions/isBoidLeader")]
+[Condition("Zombie Swarm Enemy/isBoidLeader")]
 public class A_isBoidLeader : GOCondition
 {
     public override bool Check()
