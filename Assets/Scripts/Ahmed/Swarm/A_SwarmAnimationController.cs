@@ -1,11 +1,12 @@
 using System;
+using cowsins;
 using UnityEngine;
 using UnityEngine.AI;
 public class A_SwarmAnimationController : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Animator AnimationController;
-    public HealthSystem playerHealthSystem;
+    public PlayerStats playerStats;
     private float LastSpeed;
     private bool isAttacking = false;
     private bool isStunned = false;
@@ -52,7 +53,7 @@ public class A_SwarmAnimationController : MonoBehaviour
     {
         if (AttackTimer == 0.0f)
         {
-            playerHealthSystem.Damage(20, false);
+            playerStats.Damage(30, false);
             AttackTimer += Time.deltaTime;
         }
         if (AttackTimer >= 2.0f)

@@ -1,3 +1,4 @@
+using cowsins;
 using UnityEngine;
 using UnityEngine.AI;
 public class A_SwarmSpawnManager : MonoBehaviour
@@ -17,7 +18,7 @@ public class A_SwarmSpawnManager : MonoBehaviour
     [Header("References")]
     public GameObject Goal;
     [SerializeField] private GameObject[] ZombiePrefabs;
-    [SerializeField] private HealthSystem PlayerHealthSystem;
+    [SerializeField] private PlayerStats playerStats;
 
     private int PrefabCount;
     private void Awake()
@@ -41,7 +42,7 @@ public class A_SwarmSpawnManager : MonoBehaviour
                 Random.Range(-SpawnBounds.z + transform.position.z, SpawnBounds.z + transform.position.z)
                 );
             z = Instantiate(ZombiePrefabs[Random.Range(0, PrefabCount)], Position, Quaternion.identity);
-            z.GetComponent<A_SwarmAnimationController>().playerHealthSystem = PlayerHealthSystem;
+            z.GetComponent<A_SwarmAnimationController>().playerStats = playerStats;
             agent = z.GetComponent<NavMeshAgent>();
             agent.speed = MovementSpeed;
             agent.angularSpeed = AngularSpeed;

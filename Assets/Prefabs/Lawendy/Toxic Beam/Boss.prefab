@@ -276,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::L_BossLaser
   fireParticles: {fileID: 3970322927581644147}
   laserOrigin: {fileID: 8075947512616906148}
+  damage: 10
   maxLength: 20
   damageCooldown: 0.5
 --- !u!195 &7599844621492436646

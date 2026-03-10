@@ -1,3 +1,4 @@
+using cowsins;
 using Pada1.BBCore;
 using Pada1.BBCore.Tasks;
 using UnityEngine;
@@ -18,24 +19,33 @@ namespace BBUnity.Actions
         public float attackDuration = 1f;
 
         [InParam("attackDamage")]
-        [Help("Damage dealt to the target when this attack starts")]
+        [Help("Damage dealt to the target 1 second after the attack trigger")]
         public int attackDamage = 20;
 
         private NavMeshAgent navAgent;
         private Animator animator;
-        private HealthSystem targetHealth;
+        private PlayerStats playerStats;
         private float attackStartTime;
         private bool didAttack;
+        private bool damageApplied;
 
         public override void OnStart()
         {
             if (target == null || target.scene.rootCount == 0)
                 target = GameObject.FindWithTag("Player");
 
-            targetHealth = target.GetComponent<HealthSystem>();
+            if (target == null)
+            {
+                didAttack = false;
+                damageApplied = false;
+                return;
+            }
+
+            playerStats = target.GetComponent<PlayerStats>();
             if (IsTargetDead())
             {
                 didAttack = false;
+                damageApplied = false;
                 return;
             }
 
@@ -45,11 +55,6 @@ namespace BBUnity.Actions
             StopNavigation();
             FaceTarget();
 
-            if (targetHealth != null)
-            {
-                targetHealth.TakeDamage(Mathf.Max(0, attackDamage));
-            }
-
             if (animator != null)
             {
                 animator.SetTrigger("attack");
@@ -57,6 +62,7 @@ namespace BBUnity.Actions
 
             attackStartTime = Time.time;
             didAttack = true;
+            damageApplied = false;
         }
 
         public override TaskStatus OnUpdate()
@@ -70,10 +76,22 @@ namespace BBUnity.Actions
             if (!didAttack)
                 return TaskStatus.COMPLETED;
 
-            float clampedAttackDuration = Mathf.Max(0f, attackDuration);
-            bool attackDurationFinished = (Time.time - attackStartTime) >= clampedAttackDuration;
+            float elapsed = Time.time - attackStartTime;
 
-            if (!attackDurationFinished)
+            if (!damageApplied && elapsed >= 1f)
+            {
+                if (playerStats != null && !IsTargetDead())
+                {
+                    playerStats.Damage(Mathf.Max(0, attackDamage), false);
+                }
+
+                damageApplied = true;
+            }
+
+            float clampedAttackDuration = Mathf.Max(0f, attackDuration);
+            bool attackDurationFinished = elapsed >= clampedAttackDuration;
+
+            if (!attackDurationFinished || !damageApplied)
             {
                 // Keep this action active (paused in-place) until the attack window is done.
                 StopNavigation();
@@ -90,7 +108,7 @@ namespace BBUnity.Actions
 
         private bool IsTargetDead()
         {
-            return targetHealth != null && targetHealth.currentHealth == 0;
+            return playerStats != null && playerStats.isDead;
         }
 
         private void FaceTarget()

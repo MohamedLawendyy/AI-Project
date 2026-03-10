@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7519321484099901784, guid: 4d99d47e6e48a714c895368aed8a8fa6, type: 3}
       propertyPath: eyesGlow
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7519321484099935808, guid: 4d99d47e6e48a714c895368aed8a8fa6, type: 3}
       propertyPath: m_Layer
@@ -458,9 +458,6 @@ PrefabInstance:
       addedObject: {fileID: 6260408233537479495}
     - targetCorrespondingSourceObject: {fileID: 7519321484099935820, guid: 4d99d47e6e48a714c895368aed8a8fa6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2440551981621955992}
-    - targetCorrespondingSourceObject: {fileID: 7519321484099935820, guid: 4d99d47e6e48a714c895368aed8a8fa6, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8791796374059054399}
     - targetCorrespondingSourceObject: {fileID: 7519321484099935820, guid: 4d99d47e6e48a714c895368aed8a8fa6, type: 3}
       insertIndex: -1
@@ -529,20 +526,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &2440551981621955992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032020046047304286}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3066616dac9a748a03c6058c017fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  maxHealth: 100
-  currentHealth: 100
 --- !u!195 &8791796374059054399
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -557,7 +540,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -582,7 +565,7 @@ MonoBehaviour:
   paused: 0
   restartWhenFinished: 0
   blackboard:
-    intParams: 00000000
+    intParams: 28000000
     intParamsNames:
     - attackDamage
     intParamsLostDefaultValue: 
@@ -653,7 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   healthSlider: {fileID: 0}
-  maxHealth: 10
-  currentHealth: 10
+  maxHealth: 5
+  currentHealth: 5
   agent: {fileID: 8791796374059054399}
   behaviorExecutor: {fileID: 9010678886252974581}

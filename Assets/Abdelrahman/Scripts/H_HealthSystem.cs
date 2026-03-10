@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-using cowsins; // Required for FPS Engine
+using System;
+using cowsins;
+using JetBrains.Annotations; // Required for FPS Engine
 // If you get an error here, uncomment the next line:
 // using Padula.BehaviorBricks; 
 
@@ -11,8 +13,15 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public Slider healthSlider;
 
     [Header("Stats")]
+    
     public float maxHealth = 100f;
+
+    [ReadOnly]
     public float currentHealth;
+    public bool destroyOnDeath = true;
+
+    public event Action OnDeath;
+    public bool IsDead { get { return currentHealth <= 0; }}
 
 
     [Header("AI Components")]
@@ -74,6 +83,10 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private void Die()
     {
         Debug.Log($"💀 ENEMY DIED: {gameObject.name}");
+        OnDeath?.Invoke();
+
+        if (gameObject.layer == LayerMask.NameToLayer("Grass"))
+            return;
 
         // 1. Disable Collider
         Collider col = GetComponent<Collider>();
@@ -98,10 +111,14 @@ public class HealthSystem : MonoBehaviour, IDamageable
         if (anim != null)
         {
             anim.SetTrigger("die");
+
+            if (destroyOnDeath)
+                Destroy(gameObject, 4f); // Give death animation time before removing object
         }
         else
         {
-            Destroy(gameObject);
+            if (destroyOnDeath)
+                Destroy(gameObject);
         }
     }
 }

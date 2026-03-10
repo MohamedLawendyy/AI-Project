@@ -1,4 +1,5 @@
 using System.Collections;
+using cowsins;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
@@ -27,8 +28,17 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;     // Timer to check if enemies are dead
     private SpawnState state = SpawnState.COUNTING;
 
+    private GameObject player;
+    private PlayerStats playerStats;
+    
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            playerStats = player.GetComponent<PlayerStats>();
+        }
+
         if (spawnPoints.Length == 0)
         {
             Debug.LogError("No spawn points referenced! Please assign them in the Inspector.");
@@ -39,6 +49,13 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+        if (playerStats != null && playerStats.isDead)
+        {
+            Debug.Log("Player is dead. Stopping wave spawner.");
+            this.enabled = false; // Stop the script if the player is dead
+            return;
+        }
+
         // 1. If we are waiting for the player to kill the enemies
         if (state == SpawnState.WAITING)
         {
@@ -131,10 +148,6 @@ public class WaveSpawner : MonoBehaviour
 
         // 2. Spawn the enemy
         GameObject newEnemy = Instantiate(_enemy, randomSpawnPoint.position, randomSpawnPoint.rotation);
-
-        // --- NEW: LINK THE TARGET TO BEHAVIOR BRICKS ---
-        // We find the player in the scene
-        GameObject player = GameObject.FindWithTag("Player");
 
         // We find the Behavior Executor on the new enemy
         var executor = newEnemy.GetComponent<BehaviorExecutor>();

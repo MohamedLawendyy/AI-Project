@@ -1,5 +1,5 @@
 /// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
+/// This script belongs to cowsinsï¿½ as a part of the cowsinsï¿½ FPS Engine. All rights reserved. 
 /// </summary>
 using UnityEngine;
 using UnityEngine.Events;
@@ -57,8 +57,30 @@ namespace cowsins
 
         #endregion
 
+        private HealthSystem healthSystem;
+
+        void OnDestroy()
+        {
+            if (healthSystem != null)
+            {
+                // Unsubscribe from the HealthSystem's OnDeath event to prevent memory leaks
+                healthSystem.OnDeath -= Die;
+            }
+        }
+
         private void Start()
         {
+            healthSystem = GetComponent<HealthSystem>();
+
+            if (healthSystem != null)
+            {
+                // Subscribe to the HealthSystem's OnDeath event
+                healthSystem.OnDeath += Die;
+
+                health = healthSystem.currentHealth;
+                maxHealth = healthSystem.maxHealth;
+            }
+
             GetAllReferences();
             // Apply basic settings 
             health = maxHealth;
@@ -102,10 +124,14 @@ namespace cowsins
             // Trigger damage event
             events.OnDamage.Invoke();
 
+            int damageTaken = 0;
+
             // Apply damage to shield first
             if (damage <= shield)
             {
                 shield -= damage;
+
+                damageTaken = (int)damage;
             }
             else
             {
@@ -113,7 +139,11 @@ namespace cowsins
                 damage -= shield;
                 shield = 0;
                 health -= damage;
+
+                damageTaken = (int)damage;
             }
+
+            healthSystem.TakeDamage(damageTaken);
 
             // Notify UI about the health change
             UIEvents.onHealthChanged?.Invoke(health, shield, true);

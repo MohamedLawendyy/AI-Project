@@ -29,6 +29,13 @@ namespace BBUnity.Actions
             if (target == null || target.scene.rootCount == 0)
                 target = GameObject.FindWithTag("Player");
 
+            if (target == null)
+            {
+                Debug.LogWarning("MoveToPlayer could not find a valid target.", gameObject);
+                SetMoveState(0);
+                return;
+            }
+
             targetTransform = target.transform;
             targetHealth = target.GetComponent<HealthSystem>();
             animator = gameObject.GetComponent<Animator>();
@@ -49,6 +56,12 @@ namespace BBUnity.Actions
                 return;
             }
 
+            if (!IsAgentReady())
+            {
+                SetMoveState(0);
+                return;
+            }
+
             navAgent.SetDestination(targetTransform.position);
             SetMoveState(2);
 
@@ -61,7 +74,7 @@ namespace BBUnity.Actions
 
         public override TaskStatus OnUpdate()
         {
-            if (target == null)
+            if (target == null || targetTransform == null)
                 return TaskStatus.FAILED;
 
             if (IsTargetDead())
@@ -69,6 +82,12 @@ namespace BBUnity.Actions
                 StopNavigation();
                 SetMoveState(0);
                 return TaskStatus.COMPLETED;
+            }
+
+            if (!IsAgentReady())
+            {
+                SetMoveState(0);
+                return TaskStatus.FAILED;
             }
 
             navAgent.speed = Mathf.Max(0f, speed);
@@ -94,7 +113,12 @@ namespace BBUnity.Actions
 
         private bool IsTargetDead()
         {
-            return targetHealth != null && targetHealth.currentHealth == 0;
+            return targetHealth != null && targetHealth.IsDead;
+        }
+
+        private bool IsAgentReady()
+        {
+            return navAgent != null && navAgent.enabled && navAgent.isActiveAndEnabled && navAgent.isOnNavMesh;
         }
 
         private void SetMoveState(int moveState)
@@ -108,7 +132,7 @@ namespace BBUnity.Actions
         private void StopNavigation()
         {
 #if UNITY_5_6_OR_NEWER
-                if (navAgent != null)
+                if (IsAgentReady())
                     navAgent.isStopped = true;
 #else
             if (navAgent != null)

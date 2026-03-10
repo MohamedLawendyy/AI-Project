@@ -1,3 +1,4 @@
+using cowsins;
 using UnityEngine;
 
 public class L_BossLaser : MonoBehaviour
@@ -8,14 +9,24 @@ public class L_BossLaser : MonoBehaviour
     public Transform laserOrigin;
 
     [Header("Damage Settings")]
+    public int damage = 20;
     public float maxLength = 20f;
     public float damageCooldown = 0.5f; // How often the fire damages the player (0.5 = twice per second)
 
     private bool isFiring = false;
     private float hitTimer = 0f;
 
+    private GameObject player;
+    private PlayerStats playerStats;
+
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            playerStats = player.GetComponent<PlayerStats>();
+        }
+
         if (fireParticles != null)
         {
             fireParticles.Stop();
@@ -43,6 +54,11 @@ public class L_BossLaser : MonoBehaviour
                 if (hitTimer >= damageCooldown)
                 {
                     Debug.Log("Player Hit by Fire!");
+
+                    if (playerStats != null)
+                    {
+                        playerStats.Damage(damage, false);
+                    }
 
                     // TODO: Call your player's damage script here
                     // hit.collider.GetComponent<PlayerHealth>().TakeDamage(10);
