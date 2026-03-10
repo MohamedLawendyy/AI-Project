@@ -5,11 +5,13 @@ public class A_SwarmAnimationController : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Animator AnimationController;
+    public HealthSystem playerHealthSystem;
     private float LastSpeed;
     private bool isAttacking = false;
     private bool isStunned = false;
-    private int normalPriority = 50;
-    private int attackPriority = 99;
+    private float AttackTimer;
+    private const int normalPriority = 50;
+    private const int attackPriority = 99;
 
     private void Awake()
     {
@@ -48,6 +50,13 @@ public class A_SwarmAnimationController : MonoBehaviour
     }
     public void Attack()
     {
+        if (AttackTimer == 0.0f)
+        {
+            playerHealthSystem.Damage(20, false);
+            AttackTimer += Time.deltaTime;
+        }
+        if (AttackTimer >= 2.0f)
+            AttackTimer = 0.0f;
         if (isAttacking) return;
         isAttacking = true;
         transform.LookAt(A_SwarmSpawnManager.instance.Goal.transform);

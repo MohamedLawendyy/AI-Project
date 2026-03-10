@@ -17,6 +17,7 @@ public class A_SwarmSpawnManager : MonoBehaviour
     [Header("References")]
     public GameObject Goal;
     [SerializeField] private GameObject[] ZombiePrefabs;
+    [SerializeField] private HealthSystem PlayerHealthSystem;
 
     private int PrefabCount;
     private void Awake()
@@ -25,12 +26,11 @@ public class A_SwarmSpawnManager : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-
-        SpawnSwarm();
     }
     public void SpawnSwarm()
     {
         NavMeshAgent agent;
+        GameObject z;
         PrefabCount = ZombiePrefabs.Length;
         for (int i = 0; i < Count; i++)
         {
@@ -39,7 +39,9 @@ public class A_SwarmSpawnManager : MonoBehaviour
                 transform.position.y,
                 Random.Range(-SpawnBounds.z + transform.position.z, SpawnBounds.z + transform.position.z)
                 );
-            agent = Instantiate(ZombiePrefabs[Random.Range(0, PrefabCount)], Position, Quaternion.identity).GetComponent<NavMeshAgent>();
+            z = Instantiate(ZombiePrefabs[Random.Range(0, PrefabCount)], Position, Quaternion.identity);
+            z.GetComponent<A_SwarmAnimationController>().playerHealthSystem = PlayerHealthSystem;
+            agent = z.GetComponent<NavMeshAgent>();
             agent.speed = MovementSpeed;
             agent.angularSpeed = AngularSpeed;
             agent.stoppingDistance = StopDistance;
