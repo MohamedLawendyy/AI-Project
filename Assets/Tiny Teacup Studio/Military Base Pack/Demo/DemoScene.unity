@@ -28293,6 +28293,10 @@ PrefabInstance:
       propertyPath: Goal
       value: 
       objectReference: {fileID: 1724535183}
+    - target: {fileID: 933290014484717259, guid: 0e6f35ee668f8b14cb594f3d8a2dcc7c, type: 3}
+      propertyPath: PlayerHealthSystem
+      value: 
+      objectReference: {fileID: 1724535184}
     - target: {fileID: 1352427475838431436, guid: 0e6f35ee668f8b14cb594f3d8a2dcc7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.23
@@ -53876,6 +53880,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2462714418377919277, guid: b583d0cfa47702946bd5599221e7dacb, type: 3}
   m_PrefabInstance: {fileID: 18460259}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1724535184 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6578265350748491740, guid: b583d0cfa47702946bd5599221e7dacb, type: 3}
+  m_PrefabInstance: {fileID: 18460259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724535183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96de2102870d7eb46aea3d87b0d113e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
 --- !u!1001 &1724810999
 PrefabInstance:
   m_ObjectHideFlags: 0

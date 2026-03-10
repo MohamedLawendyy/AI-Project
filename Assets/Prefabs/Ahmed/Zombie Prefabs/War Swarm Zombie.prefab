@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7050935952838783702}
   m_Layer: 13
   m_Name: War Swarm Zombie
-  m_TagString: Ramp
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583178bd780d9f94ca5b2f390ddd307a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::A_Swarm
+  playerHealthSystem: {fileID: 0}
 --- !u!114 &6508069840784694019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +583,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a0267b642b1c6ee4c87011bfaafbae02, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5066416153067648821}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a0267b642b1c6ee4c87011bfaafbae02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1292158043224806367}
     - targetCorrespondingSourceObject: {fileID: -4728426434207774260, guid: a0267b642b1c6ee4c87011bfaafbae02, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8291920720495789740}
@@ -609,12 +613,27 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1.8502955, z: 1}
   m_Center: {x: 0, y: 0.9968519, z: 0}
+--- !u!114 &1292158043224806367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304039078912631359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd51ebb9dad44488e31bddb6e3d755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DragonAttack
+  damageAmount: 20
+  destroyOnImpact: 0
+  hitEffect: {fileID: 0}
 --- !u!4 &1113507598694152325 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a0267b642b1c6ee4c87011bfaafbae02, type: 3}
