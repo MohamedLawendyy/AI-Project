@@ -28,7 +28,7 @@ public class A_SwarmSpawnManager : MonoBehaviour
 
         SpawnSwarm();
     }
-    private void SpawnSwarm()
+    public void SpawnSwarm()
     {
         NavMeshAgent agent;
         PrefabCount = ZombiePrefabs.Length;
