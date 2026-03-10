@@ -1,5 +1,6 @@
+using cowsins;
 using UnityEngine;
-public class A_SwarmData : MonoBehaviour
+public class A_SwarmData : MonoBehaviour, IDamageable
 {
     public int Health;
     public int CurrentHealth;
@@ -10,9 +11,9 @@ public class A_SwarmData : MonoBehaviour
     {
         CurrentHealth = Health;
     }
-    public void Damage(int BulletDamage)
+    public void Damage(float damage, bool isHeadshot)
     {
-        CurrentHealth -= BulletDamage;
+        CurrentHealth -= (int)damage;
         if (CurrentHealth <= Health * 0.5f && !FirstStun)
         {
             IsStunned = true;
