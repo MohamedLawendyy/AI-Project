@@ -21,18 +21,16 @@ namespace BBUnity.Actions
         private Animator animator;
 
         private Transform targetTransform;
-        private HealthStatus targetHealth;
+        private HealthSystem targetHealth;
 
         public override void OnStart()
         {
-            if (target == null)
-            {
-                Debug.LogError("The movement target of this game object is null", gameObject);
-                return;
-            }
+
+            if (target == null || target.scene.rootCount == 0)
+                target = GameObject.FindWithTag("Player");
 
             targetTransform = target.transform;
-            targetHealth = target.GetComponent<HealthStatus>();
+            targetHealth = target.GetComponent<HealthSystem>();
             animator = gameObject.GetComponent<Animator>();
 
             navAgent = gameObject.GetComponent<NavMeshAgent>();
@@ -51,14 +49,14 @@ namespace BBUnity.Actions
                 return;
             }
 
-			navAgent.SetDestination(targetTransform.position);
+            navAgent.SetDestination(targetTransform.position);
             SetMoveState(2);
-            
-            #if UNITY_5_6_OR_NEWER
+
+#if UNITY_5_6_OR_NEWER
                 navAgent.isStopped = false;
-            #else
-                navAgent.Resume();
-            #endif
+#else
+            navAgent.Resume();
+#endif
         }
 
         public override TaskStatus OnUpdate()
@@ -96,7 +94,7 @@ namespace BBUnity.Actions
 
         private bool IsTargetDead()
         {
-            return targetHealth != null && targetHealth.IsDead;
+            return targetHealth != null && targetHealth.currentHealth == 0;
         }
 
         private void SetMoveState(int moveState)
@@ -109,13 +107,13 @@ namespace BBUnity.Actions
 
         private void StopNavigation()
         {
-            #if UNITY_5_6_OR_NEWER
+#if UNITY_5_6_OR_NEWER
                 if (navAgent != null)
                     navAgent.isStopped = true;
-            #else
-                if (navAgent != null)
-                    navAgent.Stop();
-            #endif
+#else
+            if (navAgent != null)
+                navAgent.Stop();
+#endif
         }
     }
 }

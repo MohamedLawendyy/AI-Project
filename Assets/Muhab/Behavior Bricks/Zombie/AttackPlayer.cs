@@ -23,19 +23,16 @@ namespace BBUnity.Actions
 
         private NavMeshAgent navAgent;
         private Animator animator;
-        private HealthStatus targetHealth;
+        private HealthSystem targetHealth;
         private float attackStartTime;
         private bool didAttack;
 
         public override void OnStart()
         {
-            if (target == null)
-            {
-                Debug.LogError("The attack target of this game object is null", gameObject);
-                return;
-            }
+            if (target == null || target.scene.rootCount == 0)
+                target = GameObject.FindWithTag("Player");
 
-            targetHealth = target.GetComponent<HealthStatus>();
+            targetHealth = target.GetComponent<HealthSystem>();
             if (IsTargetDead())
             {
                 didAttack = false;
@@ -93,7 +90,7 @@ namespace BBUnity.Actions
 
         private bool IsTargetDead()
         {
-            return targetHealth != null && targetHealth.IsDead;
+            return targetHealth != null && targetHealth.currentHealth == 0;
         }
 
         private void FaceTarget()

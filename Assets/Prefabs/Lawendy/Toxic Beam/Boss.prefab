@@ -240,9 +240,6 @@ PrefabInstance:
       addedObject: {fileID: 3619963755752424607}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2770995503941148171}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7599844621492436646}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
       insertIndex: -1
@@ -281,20 +278,6 @@ MonoBehaviour:
   laserOrigin: {fileID: 8075947512616906148}
   maxLength: 20
   damageCooldown: 0.5
---- !u!114 &2770995503941148171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432171529643565596}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024ab7b087e34434fb45076a70fd18af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossHealth
-  health: 100
-  isDead: 0
 --- !u!195 &7599844621492436646
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -414,8 +397,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   healthSlider: {fileID: 0}
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 10
+  currentHealth: 10
   agent: {fileID: 7599844621492436646}
   behaviorExecutor: {fileID: 7395868014578401695}
 --- !u!54 &1523478190510108274

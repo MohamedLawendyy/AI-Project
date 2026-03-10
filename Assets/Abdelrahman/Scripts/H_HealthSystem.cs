@@ -14,6 +14,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public float maxHealth = 100f;
     public float currentHealth;
 
+
     [Header("AI Components")]
     public NavMeshAgent agent;
 
@@ -55,6 +56,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
         if (currentHealth <= 0) return; // Don't hurt dead enemy
 
         currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
 
         // Update UI
         if (healthSlider != null)

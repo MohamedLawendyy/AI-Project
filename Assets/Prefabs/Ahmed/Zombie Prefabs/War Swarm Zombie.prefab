@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   healthSlider: {fileID: 0}
-  maxHealth: 50
-  currentHealth: 50
+  maxHealth: 10
+  currentHealth: 10
   agent: {fileID: 5195347375368204470}
   behaviorExecutor: {fileID: 6605826582927968922}
 --- !u!1001 &646618663320919918
