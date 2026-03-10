@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 390028331056996750}
   m_Layer: 13
   m_Name: Prisoner Swarm Zombie
-  m_TagString: Untagged
+  m_TagString: Ramp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583178bd780d9f94ca5b2f390ddd307a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::A_Swarm
-  playerHealthSystem: {fileID: 0}
 --- !u!114 &4213261946078120614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,9 +257,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 01104129745c0164e80a928c3aa7085a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8741761491850431901}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 01104129745c0164e80a928c3aa7085a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8506565069835788347}
     - targetCorrespondingSourceObject: {fileID: -4728426434207774260, guid: 01104129745c0164e80a928c3aa7085a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1336619263163473129}
@@ -296,21 +292,6 @@ CapsuleCollider:
   m_Height: 2.23
   m_Direction: 1
   m_Center: {x: 0, y: 1.08, z: 0}
---- !u!114 &8506565069835788347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448044789177955089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ddd51ebb9dad44488e31bddb6e3d755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DragonAttack
-  damageAmount: 20
-  destroyOnImpact: 0
-  hitEffect: {fileID: 0}
 --- !u!4 &2257338864823626155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 01104129745c0164e80a928c3aa7085a, type: 3}
