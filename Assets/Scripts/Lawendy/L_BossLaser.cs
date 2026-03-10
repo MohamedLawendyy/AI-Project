@@ -8,6 +8,11 @@ public class L_BossLaser : MonoBehaviour
 
     public float maxLength = 20f;
 
+
+    void Start()
+    {
+        laserVFX.Stop();
+    }
     void Update()
     {
         Ray ray = new Ray(laserOrigin.position, laserOrigin.forward);
