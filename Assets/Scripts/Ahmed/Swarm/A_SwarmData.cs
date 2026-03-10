@@ -14,9 +14,9 @@ public class A_SwarmData : MonoBehaviour
     {
         CurrentHealth -= BulletDamage;
         if (CurrentHealth <= Health * 0.5f && !FirstStun)
-	{
+        {
             IsStunned = true;
-	    FirstStun = true;
-	}
+            FirstStun = true;
+        }
     }
 }
