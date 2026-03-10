@@ -36,7 +36,7 @@ public class A_SwarmSpawnManager : MonoBehaviour
         {
             Vector3 Position = new(
                 Random.Range(-SpawnBounds.x + transform.position.x, SpawnBounds.x + transform.position.x),
-                1f,
+                transform.position.y,
                 Random.Range(-SpawnBounds.z + transform.position.z, SpawnBounds.z + transform.position.z)
                 );
             agent = Instantiate(ZombiePrefabs[Random.Range(0, PrefabCount)], Position, Quaternion.identity).GetComponent<NavMeshAgent>();
