@@ -69,8 +69,8 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: BeamLenght
-    path: BeamLenght
+  - name: BeamLength
+    path: BeamLength
     tooltip: 
     space: -1
     spaceable: 0
@@ -231,12 +231,12 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 114350483966675015}
-  m_ExposedName: BeamLenght
+  m_ExposedName: BeamLength
   m_Exposed: 1
   m_Order: 1
   m_Category: 
