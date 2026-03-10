@@ -10,6 +10,12 @@ public class Condition_IsWithinRange : GOCondition
 
     public override bool Check()
     {
+        // FOOLPROOF FIX: Find the real player in the scene dynamically
+        if (target == null || target.scene.rootCount == 0)
+        {
+            target = GameObject.FindWithTag("Player");
+        }
+
         if (target == null) return false;
 
         float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
