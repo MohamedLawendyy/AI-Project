@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1457969025857920366}
   - component: {fileID: 1293263683961631089}
   - component: {fileID: 4213261946078120614}
+  - component: {fileID: 390028331056996750}
   m_Layer: 10
   m_Name: Prisoner Swarm Zombie
   m_TagString: Untagged
@@ -172,6 +173,23 @@ MonoBehaviour:
   Health: 100
   CurrentHealth: 100
   AttackDamage: 20
+--- !u!114 &390028331056996750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138258139118606123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96de2102870d7eb46aea3d87b0d113e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  healthSlider: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
+  agent: {fileID: 1812689433442206193}
+  behaviorExecutor: {fileID: 1457969025857920366}
 --- !u!1001 &1790485148865891904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,10 +249,57 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -4728426434207774260, guid: 01104129745c0164e80a928c3aa7085a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1336619263163473129}
+    - targetCorrespondingSourceObject: {fileID: -4728426434207774260, guid: 01104129745c0164e80a928c3aa7085a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5945123862419255538}
   m_SourcePrefab: {fileID: 100100000, guid: 01104129745c0164e80a928c3aa7085a, type: 3}
 --- !u!4 &2257338864823626155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 01104129745c0164e80a928c3aa7085a, type: 3}
   m_PrefabInstance: {fileID: 1790485148865891904}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2790074477557909388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4728426434207774260, guid: 01104129745c0164e80a928c3aa7085a, type: 3}
+  m_PrefabInstance: {fileID: 1790485148865891904}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1336619263163473129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790074477557909388}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.44110075, z: 0.1}
+  m_Center: {x: -5.4953686e-10, y: 0.052298065, z: 0.00000001714392}
+--- !u!114 &5945123862419255538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790074477557909388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd51ebb9dad44488e31bddb6e3d755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DragonAttack
+  damageAmount: 20
+  destroyOnImpact: 0
+  hitEffect: {fileID: 0}

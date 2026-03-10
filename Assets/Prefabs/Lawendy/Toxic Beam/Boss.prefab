@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -4372093788385109707, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
+      propertyPath: m_TagString
+      value: BodyShot
+      objectReference: {fileID: 0}
     - target: {fileID: -2588787237552858410, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -248,13 +252,13 @@ PrefabInstance:
       addedObject: {fileID: 2259732121049689639}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8778479827990865706}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -6966877687678890406}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1523478190510108274}
+    - targetCorrespondingSourceObject: {fileID: -4372093788385109707, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4455710000427810193}
   m_SourcePrefab: {fileID: 100100000, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
 --- !u!1 &432171529643565596 stripped
 GameObject:
@@ -284,7 +288,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432171529643565596}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 024ab7b087e34434fb45076a70fd18af, type: 3}
   m_Name: 
@@ -397,27 +401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688e37f895cd34b44a4f91000bffacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationSync
---- !u!65 &8778479827990865706
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432171529643565596}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.83, y: 1, z: 0.5}
-  m_Center: {x: 0, y: 0.54, z: 0}
 --- !u!114 &-6966877687678890406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,8 +414,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   healthSlider: {fileID: 0}
-  maxHealth: 50
-  currentHealth: 50
+  maxHealth: 20
+  currentHealth: 20
   agent: {fileID: 7599844621492436646}
   behaviorExecutor: {fileID: 7395868014578401695}
 --- !u!54 &1523478190510108274
@@ -467,6 +450,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
   m_PrefabInstance: {fileID: 665979031467597645}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5363008408513480312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4372093788385109707, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
+  m_PrefabInstance: {fileID: 665979031467597645}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4455710000427810193
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363008408513480312}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.01, y: 0.0075549157, z: 0.01}
+  m_Center: {x: -1.6728097e-26, y: 0.005578084, z: -8.035848e-18}
 --- !u!1001 &3880219452931431199
 PrefabInstance:
   m_ObjectHideFlags: 0
