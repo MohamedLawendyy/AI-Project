@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 6508069840784694019}
   - component: {fileID: 2097849326931838771}
   - component: {fileID: 7050935952838783702}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: War Swarm Zombie
-  m_TagString: Untagged
+  m_TagString: Ramp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

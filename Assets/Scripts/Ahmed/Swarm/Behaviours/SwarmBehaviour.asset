@@ -77,48 +77,48 @@ MonoBehaviour:
     id=\"14\" />\r\n          <ActionNode id=\"15\" />\r\n          <ActionNode id=\"16\"
     />\r\n          <ConditionEvalNode id=\"17\" />\r\n        </nodes>\r\n     
     </_nodes>\r\n    </BehaviorTree>\r\n    <RepeatDecorator id=\"1\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"248.908 -140.5976\" name=\"Repeat\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"285.783 534.0809\" name=\"Repeat\"
     description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"1\" />\r\n       
     </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n    <PrioritySelectorNode
     id=\"2\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"175.9912 -20.80619\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
+    position=\"212.8661 653.8724\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode
     id=\"2\" />\r\n          <RepeatDecorator id=\"1\" />\r\n        </data>\r\n     
     </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"6\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"-27.60924
-    148.8788\" name=\"Swarm Enemy/isAgentDead\" description=\"Eval\" cardinality=\"1\"
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"9.265678
+    823.5573\" name=\"Swarm Enemy/isAgentDead\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
     id=\"6\" />\r\n          <PrioritySelectorNode id=\"2\" />\r\n        </data>\r\n     
     </_data>\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"5\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"-27.60924 148.8788\" name=\"Swarm
+    <data breakpoint=\"0\" selected=\"False\" position=\"9.265678 823.5573\" name=\"Swarm
     Enemy/Death\" description=\"\" cardinality=\"0\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"5\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"17\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"157.819 147.8395\" name=\"Swarm
+    <data breakpoint=\"0\" selected=\"False\" position=\"194.6939 822.518\" name=\"Swarm
     Enemy/isStunned\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"17\" />\r\n         
     <PrioritySelectorNode id=\"2\" />\r\n        </data>\r\n      </_data>\r\n   
     </ConditionEvalNode>\r\n    <ActionNode id=\"16\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"139.8149 132.4074\" name=\"Swarm
+    <data breakpoint=\"0\" selected=\"False\" position=\"176.6898 807.0859\" name=\"Swarm
     Enemy/Stun\" description=\"\" cardinality=\"0\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"16\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"8\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"307.2056 140.3607\" name=\"Swarm
+    <data breakpoint=\"0\" selected=\"False\" position=\"344.0806 815.0392\" name=\"Swarm
     Enemy/canAgentAttack\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"8\" />\r\n         
     <PrioritySelectorNode id=\"2\" />\r\n        </data>\r\n      </_data>\r\n   
     </ConditionEvalNode>\r\n    <ActionNode id=\"7\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"307.2056 140.3607\" name=\"Swarm
+    <data breakpoint=\"0\" selected=\"False\" position=\"344.0806 815.0392\" name=\"Swarm
     Enemy/Attack\" description=\"\" cardinality=\"0\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"7\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"10\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"504.7059 126.1937\" name=\"AlwaysTrue\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"541.5807 800.8722\" name=\"AlwaysTrue\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ConditionEvalNode id=\"10\" />\r\n          <PrioritySelectorNode
     id=\"2\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"9\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"504.7059 126.1937\" name=\"Swarm Enemy/Chase\" description=\"\" cardinality=\"0\"
+    position=\"541.5807 800.8722\" name=\"Swarm Enemy/Chase\" description=\"\" cardinality=\"0\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
     id=\"9\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n 
     <runtimeInfo>\r\n    <SelectorNode id=\"11\">\r\n      <children>\r\n       
@@ -138,26 +138,26 @@ MonoBehaviour:
     <ConditionEvalNode id=\"0\" policy=\"ATOMIC_CHECK\" name=\"Swarm Enemy/canAgentAttack\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n 
     </runtimeInfo>\r\n  <editorInfo>\r\n    <SelectorNode id=\"11\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"927.7313 -325.486\" name=\"Selector\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"964.6063 349.1925\" name=\"Selector\"
     description=\"Executes all its children until one of them is successful\" cardinality=\"-1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SelectorNode
     id=\"11\" />\r\n        </data>\r\n      </_data>\r\n    </SelectorNode>\r\n   
     <ActionNode id=\"12\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"1147.06 -205.2315\" name=\"Swarm Enemy/Chase\" description=\"\" cardinality=\"0\"
+    position=\"1183.935 469.4471\" name=\"Swarm Enemy/Chase\" description=\"\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
     id=\"12\" />\r\n          <SelectorNode id=\"11\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n    <SequenceNode id=\"13\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"838.1483 -182.7778\" name=\"Sequence\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"875.0232 491.9008\" name=\"Sequence\"
     description=\"Executes all its children in sequence until all of them are successful\"
     cardinality=\"-1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <SequenceNode id=\"13\" />\r\n          <SelectorNode id=\"11\" />\r\n       
     </data>\r\n      </_data>\r\n    </SequenceNode>\r\n    <ConditionNode id=\"14\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"814.1897
-    -71.43517\" name=\"Swarm Enemy/canAgentAttack\" description=\"\" cardinality=\"0\"
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"851.0647
+    603.2434\" name=\"Swarm Enemy/canAgentAttack\" description=\"\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionNode
     id=\"14\" />\r\n          <SequenceNode id=\"13\" />\r\n        </data>\r\n     
     </_data>\r\n    </ConditionNode>\r\n    <ActionNode id=\"15\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"1040.231 -84.86108\" name=\"Swarm
+    <data breakpoint=\"0\" selected=\"False\" position=\"1077.106 589.8175\" name=\"Swarm
     Enemy/Attack\" description=\"\" cardinality=\"0\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"15\" />\r\n         
     <SequenceNode id=\"13\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
@@ -165,6 +165,6 @@ MonoBehaviour:
     selected=\"False\" position=\"0 0\" name=\"AlwaysTrue\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n       
     </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
-  zoom: 0.9
+  zoom: 0.7
   subslist: []
   _guid: 30498c77925b90c43a04329ec8ba46bb

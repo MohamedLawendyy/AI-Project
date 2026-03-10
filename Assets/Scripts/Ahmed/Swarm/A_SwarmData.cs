@@ -1,22 +1,35 @@
 using UnityEngine;
 public class A_SwarmData : MonoBehaviour
 {
-    public int Health;
-    public int CurrentHealth;
+    public float Health;
+    public float CurrentHealth;
     public int AttackDamage;
     public bool IsStunned { get; set; }
     private bool FirstStun = false;
+    private HealthSystem HS;
     private void Awake()
     {
         CurrentHealth = Health;
+        HS = GetComponent<HealthSystem>();
+        Health = HS.maxHealth;
+        CurrentHealth = Health;
     }
-    public void Damage(int BulletDamage)
+    private void Update()
     {
-        CurrentHealth -= BulletDamage;
+        CurrentHealth = HS.currentHealth;
         if (CurrentHealth <= Health * 0.5f && !FirstStun)
-	{
+        {
             IsStunned = true;
-	    FirstStun = true;
-	}
+            FirstStun = true;
+        }
     }
+    //public void Damage(int BulletDamage)
+    //{
+    //    CurrentHealth -= BulletDamage;
+    //    if (CurrentHealth <= Health * 0.5f && !FirstStun)
+    //    {
+    //        IsStunned = true;
+    //        FirstStun = true;
+    //    }
+    //}
 }

@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 1293263683961631089}
   - component: {fileID: 4213261946078120614}
   - component: {fileID: 390028331056996750}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Prisoner Swarm Zombie
-  m_TagString: Untagged
+  m_TagString: Ramp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
