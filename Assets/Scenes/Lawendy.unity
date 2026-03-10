@@ -206,6 +206,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
       insertIndex: -1
       addedObject: {fileID: 433237338}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 433237339}
   m_SourcePrefab: {fileID: 100100000, guid: 34d5d6ca70b56c64f930ea2c5061d867, type: 3}
 --- !u!1 &433237337 stripped
 GameObject:
@@ -227,6 +230,54 @@ MonoBehaviour:
   laserVFX: {fileID: 2118390062}
   laserOrigin: {fileID: 1335173505}
   maxLength: 20
+--- !u!114 &433237339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433237337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024ab7b087e34434fb45076a70fd18af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossHealth
+  maxHealth: 200
+  currentHealth: 0
+  swordTag: Sword
+  swordDamage: 15
+  bulletTag: Bullet
+  bulletDamage: 8
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 433237339}
+        m_TargetAssemblyTypeName: BossHealth, Assembly-CSharp
+        m_MethodName: TakeDamage
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 433237337}
+        m_TargetAssemblyTypeName: BossHealth, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &438903934
 GameObject:
   m_ObjectHideFlags: 0
